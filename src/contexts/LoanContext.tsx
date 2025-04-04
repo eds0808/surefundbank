@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Client, LoanHistory, Payment, LoanApplication } from '../types';
 import { mockClients, mockLoanHistory } from '../data/mockData';
@@ -177,25 +176,21 @@ export const LoanProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
   }, []);
 
-  return (
-    <LoanContext.Provider
-      value={{
-        clients,
-        loanHistory,
-        selectedClient,
-        selectClient,
-        calculateTrustRating,
-        canApplyForLoan,
-        addLoan,
-        updateLoan,
-        deleteLoan,
-        getClientLoans,
-        calculateMonthlyPayment,
-      }}
-    >
-      {children}
-    </LoanContext.Provider>
-  );
+  const value = {
+    clients,
+    loanHistory,
+    selectedClient,
+    selectClient,
+    calculateTrustRating,
+    canApplyForLoan,
+    addLoan,
+    updateLoan,
+    deleteLoan,
+    getClientLoans,
+    calculateMonthlyPayment,
+  };
+
+  return <LoanContext.Provider value={value}>{children}</LoanContext.Provider>;
 };
 
 export const useLoan = () => {
