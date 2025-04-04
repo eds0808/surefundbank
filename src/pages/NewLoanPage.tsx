@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   Card, 
@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button';
 import { useLoan } from '@/contexts/LoanContext';
 import ClientSelector from '@/components/ClientSelector';
 import LoanCalculator from '@/components/LoanCalculator';
+import PaymentHistoryTable from '@/components/PaymentHistoryTable';
 import { toast } from '@/components/ui/use-toast';
 import { ArrowLeft } from 'lucide-react';
 
@@ -22,7 +23,8 @@ const NewLoanPage: React.FC = () => {
     selectedClient, 
     selectClient, 
     canApplyForLoan,
-    addLoan 
+    addLoan,
+    getClientLoans
   } = useLoan();
   
   // If there's no client selected, select the first client by default
@@ -72,6 +74,7 @@ const NewLoanPage: React.FC = () => {
   };
   
   const eligibleForLoan = selectedClient ? canApplyForLoan(selectedClient.id) : false;
+  const clientLoans = selectedClient ? getClientLoans(selectedClient.id) : [];
   
   return (
     <div className="container mx-auto p-4 space-y-6">
@@ -118,6 +121,14 @@ const NewLoanPage: React.FC = () => {
                       This client is not eligible for a loan due to poor credit history. 
                       Their trust rating is below the required threshold.
                     </p>
+                  </div>
+                )}
+                
+                {/* Payment History Breakdown */}
+                {clientLoans.length > 0 && (
+                  <div className="mt-8">
+                    <h3 className="text-lg font-medium mb-4">Payment History Breakdown</h3>
+                    <PaymentHistoryTable loanHistory={clientLoans} />
                   </div>
                 )}
               </>

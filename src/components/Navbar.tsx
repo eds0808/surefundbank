@@ -8,7 +8,7 @@ const Navbar: React.FC = () => {
   return (
     <header className="border-b">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <div className="font-bold text-lg text-primary">Loan Trust Buddy</div>
+        <div className="font-bold text-lg text-primary">Sure Fund Bank</div>
         
         <nav className="flex space-x-6">
           <Link 
