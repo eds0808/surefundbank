@@ -1,4 +1,3 @@
-
 import { Client, LoanHistory } from '../types';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -105,6 +104,21 @@ export const mockLoanHistory: LoanHistory[] = [
       { id: uuidv4(), date: createDate(-2), amount: 5200 },
     ],
   },
+  {
+    id: uuidv4(),
+    clientId: mockClients[0].id,
+    amount: 25000,
+    term: 3,
+    startDate: createDate(-24),
+    dueDate: createDate(-21),
+    status: 'fully-paid',
+    interestRate: 0.06, // 6%
+    paymentHistory: [
+      { id: uuidv4(), date: createDate(-23), amount: 8833 },
+      { id: uuidv4(), date: createDate(-22), amount: 8833 },
+      { id: uuidv4(), date: createDate(-21), amount: 8834 },
+    ],
+  },
 
   // Maria Santos - Good history
   {
@@ -125,6 +139,21 @@ export const mockLoanHistory: LoanHistory[] = [
       { id: uuidv4(), date: createDate(-3), amount: 3733 },
     ],
   },
+  {
+    id: uuidv4(),
+    clientId: mockClients[1].id,
+    amount: 20000,
+    term: 3,
+    startDate: createDate(-20),
+    dueDate: createDate(-17),
+    status: 'fully-paid',
+    interestRate: 0.06, // 6%
+    paymentHistory: [
+      { id: uuidv4(), date: createDate(-19), amount: 7067 },
+      { id: uuidv4(), date: createDate(-18), amount: 7067 },
+      { id: uuidv4(), date: createDate(-17), amount: 7066 },
+    ],
+  },
 
   // Pedro Reyes - Partial payment
   {
@@ -139,6 +168,21 @@ export const mockLoanHistory: LoanHistory[] = [
     paymentHistory: [
       { id: uuidv4(), date: createDate(-5), amount: 4542 },
       { id: uuidv4(), date: createDate(-3), amount: 4542 },
+      // Missing last payment
+    ],
+  },
+  {
+    id: uuidv4(),
+    clientId: mockClients[2].id,
+    amount: 15000,
+    term: 3,
+    startDate: createDate(-12),
+    dueDate: createDate(-9),
+    status: 'partially-paid',
+    interestRate: 0.07, // 7%
+    paymentHistory: [
+      { id: uuidv4(), date: createDate(-11), amount: 5350 },
+      { id: uuidv4(), date: createDate(-10), amount: 5350 },
       // Missing last payment
     ],
   },
@@ -205,6 +249,22 @@ export const mockLoanHistory: LoanHistory[] = [
       // Missing last payments
     ],
   },
+  {
+    id: uuidv4(),
+    clientId: mockClients[4].id,
+    amount: 20000,
+    term: 6,
+    startDate: createDate(-20),
+    dueDate: createDate(-14),
+    status: 'partially-paid',
+    interestRate: 0.09, // 9%
+    paymentHistory: [
+      { id: uuidv4(), date: createDate(-18), amount: 3633 },
+      { id: uuidv4(), date: createDate(-16), amount: 3633 },
+      { id: uuidv4(), date: createDate(-16), amount: 3633 },
+      // Missing other payments
+    ],
+  },
 
   // Sofia Cruz - Defaulted
   {
@@ -221,6 +281,20 @@ export const mockLoanHistory: LoanHistory[] = [
       // Missing other payments
     ],
   },
+  {
+    id: uuidv4(),
+    clientId: mockClients[5].id,
+    amount: 10000,
+    term: 3,
+    startDate: createDate(-15),
+    dueDate: createDate(-12),
+    status: 'defaulted',
+    interestRate: 0.05, // 5%
+    paymentHistory: [
+      { id: uuidv4(), date: createDate(-14), amount: 3500 },
+      // Missing other payments
+    ],
+  },
 
   // Miguel Lim - Bad history
   {
@@ -232,6 +306,17 @@ export const mockLoanHistory: LoanHistory[] = [
     dueDate: createDate(-2),
     status: 'defaulted',
     interestRate: 0.06, // 6%
+    paymentHistory: [], // No payments made
+  },
+  {
+    id: uuidv4(),
+    clientId: mockClients[6].id,
+    amount: 5000,
+    term: 1,
+    startDate: createDate(-8),
+    dueDate: createDate(-7),
+    status: 'defaulted',
+    interestRate: 0.04, // 4%
     paymentHistory: [], // No payments made
   },
 ];

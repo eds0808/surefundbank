@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
@@ -14,7 +13,8 @@ import { useLoan } from '@/contexts/LoanContext';
 import ClientSelector from '@/components/ClientSelector';
 import ClientDetails from '@/components/ClientDetails';
 import LoanHistoryTable from '@/components/LoanHistoryTable';
-import { Trash, Edit, PlusCircle, ArrowRight } from 'lucide-react';
+import PaymentHistoryTable from '@/components/PaymentHistoryTable';
+import { Trash, Edit, PlusCircle, ArrowRight, CreditCard } from 'lucide-react';
 import { 
   AlertDialog,
   AlertDialogAction,
@@ -27,6 +27,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { toast } from '@/components/ui/use-toast';
 import { LoanHistory } from '@/types';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const ClientsPage: React.FC = () => {
   const navigate = useNavigate();
@@ -129,18 +130,39 @@ const ClientsPage: React.FC = () => {
             </div>
             
             <div className="md:col-span-2">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Loan History</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <LoanHistoryTable 
-                    loans={clientLoans} 
-                    onEditLoan={handleEditLoan}
-                    onDeleteLoan={handleDeleteLoan}
-                  />
-                </CardContent>
-              </Card>
+              <Tabs defaultValue="loans" className="w-full">
+                <TabsList className="grid w-full grid-cols-2">
+                  <TabsTrigger value="loans">Loan Summary</TabsTrigger>
+                  <TabsTrigger value="payments">Payment History</TabsTrigger>
+                </TabsList>
+                <TabsContent value="loans">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Loan History</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <LoanHistoryTable 
+                        loans={clientLoans} 
+                        onEditLoan={handleEditLoan}
+                        onDeleteLoan={handleDeleteLoan}
+                      />
+                    </CardContent>
+                  </Card>
+                </TabsContent>
+                <TabsContent value="payments">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Payment History Breakdown</CardTitle>
+                      <CardDescription>
+                        Detailed history of all payments made by this client
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <PaymentHistoryTable loanHistory={clientLoans} />
+                    </CardContent>
+                  </Card>
+                </TabsContent>
+              </Tabs>
             </div>
           </div>
           
