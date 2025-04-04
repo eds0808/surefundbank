@@ -6,14 +6,15 @@ import {
   CardContent, 
   CardDescription, 
   CardHeader, 
-  CardTitle 
+  CardTitle,
+  CardFooter
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useLoan } from '@/contexts/LoanContext';
 import ClientSelector from '@/components/ClientSelector';
 import ClientDetails from '@/components/ClientDetails';
 import LoanHistoryTable from '@/components/LoanHistoryTable';
-import { Trash, Edit, PlusCircle } from 'lucide-react';
+import { Trash, Edit, PlusCircle, ArrowRight } from 'lucide-react';
 import { 
   AlertDialog,
   AlertDialogAction,
@@ -23,7 +24,6 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { toast } from '@/components/ui/use-toast';
 import { LoanHistory } from '@/types';
@@ -100,22 +100,31 @@ const ClientsPage: React.FC = () => {
       {selectedClient && (
         <>
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="md:col-span-1">
+            <div className="md:col-span-1 space-y-4">
               <ClientDetails 
                 client={selectedClient} 
                 canApplyForLoan={canClientApplyForLoan} 
               />
               
               {canClientApplyForLoan && (
-                <div className="mt-4">
-                  <Button 
-                    onClick={handleNewLoan} 
-                    className="w-full"
-                  >
-                    <PlusCircle className="mr-2 h-4 w-4" />
-                    Apply for New Loan
-                  </Button>
-                </div>
+                <Card className="border-success bg-success/5">
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-success text-lg">Loan Eligible</CardTitle>
+                    <CardDescription>
+                      This client qualifies for a new loan
+                    </CardDescription>
+                  </CardHeader>
+                  <CardFooter>
+                    <Button 
+                      onClick={handleNewLoan} 
+                      className="w-full"
+                    >
+                      <PlusCircle className="mr-2 h-4 w-4" />
+                      Apply for New Loan
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </CardFooter>
+                </Card>
               )}
             </div>
             

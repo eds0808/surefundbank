@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import TrustRatingBadge from './TrustRatingBadge';
 import TrustMeter from './TrustMeter';
+import { AlertCircle, CheckCircle } from 'lucide-react';
 
 interface ClientDetailsProps {
   client: Client;
@@ -47,6 +48,27 @@ const ClientDetails: React.FC<ClientDetailsProps> = ({ client, canApplyForLoan }
               </Badge>
             )}
           </div>
+        </div>
+        
+        <div className="mt-4 p-3 rounded-md border text-sm">
+          <div className="font-medium mb-1">Assessment</div>
+          {canApplyForLoan ? (
+            <div className="flex items-start text-success gap-2">
+              <CheckCircle className="h-5 w-5 mt-0.5 flex-shrink-0" />
+              <div>
+                This client has a good payment history with a trust rating of {client.trustRating}%. 
+                They are suitable for a new loan.
+              </div>
+            </div>
+          ) : (
+            <div className="flex items-start text-danger gap-2">
+              <AlertCircle className="h-5 w-5 mt-0.5 flex-shrink-0" />
+              <div>
+                This client has a trust rating of {client.trustRating}% which is below the required 80% threshold.
+                They are not suitable for a new loan at this time.
+              </div>
+            </div>
+          )}
         </div>
       </CardContent>
     </Card>
