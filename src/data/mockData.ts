@@ -1,3 +1,4 @@
+
 import { Client, LoanHistory } from '../types';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -8,7 +9,7 @@ const createDate = (monthsAway: number): string => {
   return date.toISOString();
 };
 
-// Generate mock clients
+// Generate mock clients with different trust ratings
 export const mockClients: Client[] = [
   {
     id: uuidv4(),
