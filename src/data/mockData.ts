@@ -17,7 +17,7 @@ export const mockClients: Client[] = [
     email: 'juan@example.com',
     phone: '09123456789',
     address: 'Manila, Philippines',
-    trustRating: 92,
+    trustRating: 94,
   },
   {
     id: uuidv4(),
@@ -25,7 +25,7 @@ export const mockClients: Client[] = [
     email: 'maria@example.com',
     phone: '09123456790',
     address: 'Quezon City, Philippines',
-    trustRating: 85,
+    trustRating: 86,
   },
   {
     id: uuidv4(),
@@ -33,7 +33,7 @@ export const mockClients: Client[] = [
     email: 'pedro@example.com',
     phone: '09123456791',
     address: 'Cebu, Philippines',
-    trustRating: 78,
+    trustRating: 72,
   },
   {
     id: uuidv4(),
@@ -41,7 +41,7 @@ export const mockClients: Client[] = [
     email: 'ana@example.com',
     phone: '09123456792',
     address: 'Davao, Philippines',
-    trustRating: 95,
+    trustRating: 98,
   },
   {
     id: uuidv4(),
@@ -49,7 +49,7 @@ export const mockClients: Client[] = [
     email: 'carlos@example.com',
     phone: '09123456793',
     address: 'Baguio, Philippines',
-    trustRating: 65,
+    trustRating: 67,
   },
   {
     id: uuidv4(),
@@ -57,7 +57,7 @@ export const mockClients: Client[] = [
     email: 'sofia@example.com',
     phone: '09123456794',
     address: 'Iloilo, Philippines',
-    trustRating: 50,
+    trustRating: 54,
   },
   {
     id: uuidv4(),
