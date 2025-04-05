@@ -1,4 +1,3 @@
-
 import { Client, LoanHistory } from '../types';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -17,7 +16,7 @@ export const mockClients: Client[] = [
     email: 'juan@example.com',
     phone: '09123456789',
     address: 'Manila, Philippines',
-    trustRating: 94,
+    trustRating: 100,
   },
   {
     id: uuidv4(),
@@ -25,7 +24,7 @@ export const mockClients: Client[] = [
     email: 'maria@example.com',
     phone: '09123456790',
     address: 'Quezon City, Philippines',
-    trustRating: 86,
+    trustRating: 85,
   },
   {
     id: uuidv4(),
@@ -33,7 +32,7 @@ export const mockClients: Client[] = [
     email: 'pedro@example.com',
     phone: '09123456791',
     address: 'Cebu, Philippines',
-    trustRating: 72,
+    trustRating: 20,
   },
   {
     id: uuidv4(),
@@ -41,7 +40,7 @@ export const mockClients: Client[] = [
     email: 'ana@example.com',
     phone: '09123456792',
     address: 'Davao, Philippines',
-    trustRating: 98,
+    trustRating: 95,
   },
   {
     id: uuidv4(),
@@ -49,7 +48,7 @@ export const mockClients: Client[] = [
     email: 'carlos@example.com',
     phone: '09123456793',
     address: 'Baguio, Philippines',
-    trustRating: 67,
+    trustRating: 65,
   },
   {
     id: uuidv4(),
@@ -57,7 +56,7 @@ export const mockClients: Client[] = [
     email: 'sofia@example.com',
     phone: '09123456794',
     address: 'Iloilo, Philippines',
-    trustRating: 54,
+    trustRating: 50,
   },
   {
     id: uuidv4(),
@@ -65,7 +64,7 @@ export const mockClients: Client[] = [
     email: 'miguel@example.com',
     phone: '09123456795',
     address: 'Batangas, Philippines',
-    trustRating: 40,
+    trustRating: 0,
   },
 ];
 
